@@ -198,6 +198,7 @@ function showResults() {
     }
     
     resultContainer.classList.remove('hidden');
+    checkButton.classList.add('hidden');
 }
 
 checkButton.addEventListener('click', showFeedback);
@@ -216,4 +217,4 @@ restartButton.addEventListener('click', restartQuiz);
 
 // Initialize the quiz
 displayQuestion();
-updateProgress(); 
+updateProgress();

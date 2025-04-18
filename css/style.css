@@ -41,6 +41,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
 }
 
 .logo i {
@@ -999,5 +1000,317 @@ html {
         width: 55px;
         height: 55px;
         font-size: 1.4rem;
+    }
+}
+
+/* Materi Page Styles */
+.materi-header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 8rem 0 3rem;
+    margin-top: 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.materi-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.materi-header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.materi-grid {
+    padding: 4rem 0;
+}
+
+.materi-grid .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.materi-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.materi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(44, 62, 80, 0.1));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.materi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.materi-card:hover::before {
+    opacity: 1;
+}
+
+.materi-card:hover::after {
+    height: 50%;
+}
+
+.materi-icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+.arabic-letter {
+    font-family: 'Amiri', serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.materi-card:hover .arabic-letter {
+    transform: translateY(-10px) scale(1.1);
+    color: #2c3e50;
+}
+
+.materi-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.materi-card:hover h3 {
+    color: #3498db;
+    transform: translateX(10px);
+}
+
+.materi-card p {
+    color: #4a5568;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.materi-card:hover p {
+    transform: translateX(5px);
+}
+
+.materi-progress {
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.materi-card:hover .materi-progress {
+    transform: scale(1.05);
+}
+
+.progress-bar {
+    background: #e2e8f0;
+    border-radius: 50px;
+    height: 0.4rem;
+    margin-bottom: 0.4rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+.materi-button {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem;
+    transform: translateY(0);
+}
+
+.materi-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.materi-button:hover {
+    background: #2c3e50;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.materi-button:hover::before {
+    transform: translateX(100%);
+}
+
+.materi-card:hover .materi-button {
+    transform: translateY(-5px);
+}
+
+.materi-features {
+    background: #f7fafc;
+    padding: 6rem 0;
+}
+
+.materi-features h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #1a365d;
+    font-size: 2.5rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.feature-card h4 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.feature-button {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-button {
+    background: #2c3e50;
+    transform: translateY(-2px);
+}
+
+.feature-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .materi-header {
+        padding: 3rem 0;
+    }
+
+    .materi-header h1 {
+        font-size: 2rem;
+    }
+
+    .materi-grid .container {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
     }
 } 

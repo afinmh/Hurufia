@@ -3,85 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem CF Tajwid</title>
+    <title>Hurufia - Belajar Tajwid Online</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="quiz-container">
-            <div class="header">
-                <h1>Sistem CF Tajwid</h1>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress" id="progress"></div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-book-quran"></i>
+                Hurufia
+            </div>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#newsletter">Kontak</a></li>
+                <li><a href="materi.html" class="nav-button">Mulai Belajar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hurufia</h1>
+                <p class="tagline">Kuasai Tajwid, Sempurnakan Bacaan</p>
+                <p class="description">Platform pembelajaran tajwid online yang interaktif dan menyenangkan. Mulai perjalanan untuk bacaan Al-Qur'an yang lebih baik.</p>
+                <div class="cta-buttons">
+                    <a href="materi.html" class="cta-button primary">Mulai Belajar</a>
+                    <a href="#tentang" class="cta-button secondary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="heroo.jpg" alt="Ilustrasi Pembelajaran Tajwid">
+            </div>
+        </div>
+    </header>
+
+    <section id="tentang" class="about">
+        <div class="container">
+            <h2>Mengapa Memilih Hurufia?</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Metode Pembelajaran Modern</h3>
+                    <p>Kombinasi antara pembelajaran tradisional dan teknologi modern untuk hasil yang optimal.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Sistem Feedback</h3>
+                    <p>Dapatkan umpan balik detail untuk mengidentifikasi kelemahan dan memperbaiki bacaan tajwid Anda.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Pembelajaran Interaktif</h3>
+                    <p>Quiz dan tes pemahaman yang menyenangkan untuk mengukur dan meningkatkan kemampuan tajwid Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Apa Kata Mereka?</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <span id="progress-text">0/4</span>
-                </div>
-            </div>
-            
-            <div id="question-container">
-                <div class="question-card">
-                    <h2 id="question-text"></h2>
-                    <div id="options-container"></div>
-                    <button id="check-button" class="hidden">
-                        <i class="fas fa-check"></i> Periksa Jawaban
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="results-section">
-            <div class="results-panel">
-                <h3>Hasil Jawaban</h3>
-                <div id="answers-list">
-                    <!-- Jawaban akan ditambahkan secara dinamis -->
-                </div>
-            </div>
-
-            <div id="result-container" class="hidden">
-                <div class="result-card">
-                    <h2>Rangkuman Evaluasi</h2>
-                    <div class="result-content">
-                        <p id="average-cf"></p>
-                        <p id="final-feedback"></p>
+                    <div class="testimonial-content">
+                        <p>"Hurufia membantu saya memahami tajwid dengan lebih mudah. Materinya sangat terstruktur dan mudah dipahami. Saya bisa belajar kapan saja dan di mana saja."</p>
                     </div>
-                    <button id="restart-button">
-                        <i class="fas fa-redo"></i> Mulai Lagi
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ahmad</h4>
+                            <p>Mahasiswa</p>
+                            <span class="author-location"><i class="fas fa-map-marker-alt"></i> Jakarta</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Platform yang sangat membantu untuk belajar tajwid. Saya bisa belajar kapan saja dan di mana saja. Progress tracking-nya sangat membantu memantau perkembangan belajar."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Siti</h4>
+                            <p>Ibu Rumah Tangga</p>
+                            <span class="author-location"><i class="fas fa-map-marker-alt"></i> Bandung</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Sangat membantu dalam meningkatkan kualitas bacaan Al-Qur'an. Metode pembelajarannya modern dan mudah dipahami. Komunitasnya juga sangat mendukung."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rudi</h4>
+                            <p>Karyawan</p>
+                            <span class="author-location"><i class="fas fa-map-marker-alt"></i> Surabaya</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-stats">
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Pembelajar Aktif</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9</h3>
+                    <p>Rating Aplikasi</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Kepuasan Pengguna</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Siap Memulai Perjalanan Belajar Tajwid?</h2>
+                <p>Bergabunglah dengan ribuan pembelajar lainnya di Hurufia</p>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Materi Lengkap</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Latihan Interaktif</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Sertifikat Penyelesaian</span>
+                    </div>
+                </div>
+                <a href="materi.html" class="cta-button primary">Mulai Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Dapatkan Update Terbaru</h2>
+                <p>Berlangganan newsletter kami untuk mendapatkan informasi terbaru tentang materi pembelajaran dan tips tajwid.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Masukkan email Anda" required>
+                    <button type="submit" class="newsletter-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Berlangganan
                     </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-book-quran"></i>
+                            Hurufia
+                        </div>
+                        <p>Platform pembelajaran tajwid online terbaik untuk meningkatkan kualitas bacaan Al-Qur'an Anda.</p>
+                        <div class="social-links">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Navigasi</h4>
+                            <ul>
+                                <li><a href="#beranda">Beranda</a></li>
+                                <li><a href="#tentang">Tentang</a></li>
+                                <li><a href="#newsletter">Kontak</a></li>
+                                <li><a href="materi.html">Materi</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Kontak</h4>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i> info@hurufia.com</li>
+                                <li><i class="fas fa-phone"></i> +62 123 4567 890</li>
+                                <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Hurufia. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Kebijakan Privasi</a>
+                        <a href="#">Syarat & Ketentuan</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- Modal untuk Evaluasi Jawaban -->
-    <div id="feedback-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Evaluasi Jawaban</h3>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="feedback-icon">
-                    <i id="feedback-icon" class="fas"></i>
-                </div>
-                <p id="feedback-text"></p>
-                <div class="cf-score">
-                    <span>CF Score:</span>
-                    <span id="cf-value"></span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="next-button">
-                    <i class="fas fa-arrow-right"></i> Lanjut ke Soal Berikutnya
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <script src="script.js"></script>
+    <script>
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html> 

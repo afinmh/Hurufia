@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem CF Tajwid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="tes.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="quiz-container">
+            <div class="header">
+                <h1>Sistem CF Tajwid</h1>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span id="progress-text">0/4</span>
+                </div>
+            </div>
+            
+            <div id="question-container">
+                <div class="question-card">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                    <button id="check-button" class="hidden">
+                        <i class="fas fa-check"></i> Periksa Jawaban
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="results-panel">
+                <h3>Hasil Jawaban</h3>
+                <div id="answers-list">
+                    <!-- Jawaban akan ditambahkan secara dinamis -->
+                </div>
+            </div>
+
+            <div id="result-container" class="hidden">
+                <div class="result-card">
+                    <h2>Rangkuman Evaluasi</h2>
+                    <div class="result-content">
+                        <p id="average-cf"></p>
+                        <p id="final-feedback"></p>
+                    </div>
+                    <button id="restart-button">
+                        <i class="fas fa-redo"></i> Mulai Lagi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Evaluasi Jawaban -->
+    <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Evaluasi Jawaban</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="feedback-icon">
+                    <i id="feedback-icon" class="fas"></i>
+                </div>
+                <p id="feedback-text"></p>
+                <div class="cf-score">
+                    <span>CF Score:</span>
+                    <span id="cf-value"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="next-button">
+                    <i class="fas fa-arrow-right"></i> Lanjut ke Soal Berikutnya
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="tes.js"></script>
+</body>
+</html> 

@@ -212,12 +212,30 @@
         AOS.init();
         const scrollToTopBtn = document.getElementById('scrollToTop');
         const resetProgressBtn = document.getElementById('resetProgressBtn');
+        const footer = document.querySelector('.footer');
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollToTopBtn.classList.add('visible');
+                resetProgressBtn.classList.add('visible');
             } else {
                 scrollToTopBtn.classList.remove('visible');
+                resetProgressBtn.classList.remove('visible');
+            }
+
+            // Check if reset button would overlap with footer
+            const footerRect = footer.getBoundingClientRect();
+            const resetBtnRect = resetProgressBtn.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (footerRect.top < windowHeight) {
+                // Calculate how much of the footer is visible
+                const footerVisibleHeight = windowHeight - footerRect.top;
+                // Adjust button position to stay above footer
+                resetProgressBtn.style.bottom = `${footerVisibleHeight + 30}px`;
+            } else {
+                // Reset to default position when footer is not visible
+                resetProgressBtn.style.bottom = '30px';
             }
         });
         

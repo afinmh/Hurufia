@@ -1,26 +1,49 @@
 /* Back Button */
 .back-button {
     position: fixed;
-    top: 2rem;
-    left: 2rem;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 500;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
+    text-decoration: none;
 }
 
 .back-button:hover {
-    transform: translateX(-5px);
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+.back-button:active {
+    transform: translateY(1px);
+}
+
+.back-button i {
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
 }
 
 /* Materi Detail Header */

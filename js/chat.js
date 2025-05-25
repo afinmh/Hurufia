@@ -353,30 +353,149 @@ function getChatHistory() {
     return messages;
 }
 
-// Panggil API Mistral untuk penyelesaian chat
+// Tambahkan fungsi utilitas NLP setelah deklarasi variabel
+const nlpUtils = {
+    // Daftar stopwords bahasa Indonesia
+    stopwords: ['yang', 'di', 'ke', 'dari', 'pada', 'dalam', 'untuk', 'dengan', 'dan', 'atau', 
+        'ini', 'itu', 'juga', 'sudah', 'saya', 'aku', 'kamu', 'dia', 'mereka', 'kita', 'akan', 
+        'bisa', 'ada', 'tidak', 'saat', 'oleh', 'setelah', 'tentang', 'seperti', 'ketika',
+        'bagi', 'sampai', 'karena', 'jika', 'namun', 'sehingga', 'yaitu', 'yakni', 'daripada',
+        'adalah', 'dapat', 'apakah', 'bagaimana', 'dimana', 'kapan', 'mengapa'],
+
+    // Aturan stemming sederhana (contoh pola imbuhan)
+    stemRules: [
+        { regex: /^me(\w+)/, result: '$1' },
+        { regex: /^di(\w+)/, result: '$1' },
+        { regex: /^ber(\w+)/, result: '$1' },
+        { regex: /^ter(\w+)/, result: '$1' },
+        { regex: /^pe(\w+)/, result: '$1' },
+        { regex: /(\w+)kan$/, result: '$1' },
+        { regex: /(\w+)i$/, result: '$1' },
+        { regex: /(\w+)an$/, result: '$1' }
+    ],
+
+    // 1. Lowercasing
+    lowercase: (text) => {
+        return text.toLowerCase();
+    },
+
+    // 2. Tokenisasi
+    tokenize: (text) => {
+        return text.split(/\s+/)
+            .map(token => token.replace(/[^\w\s']/g, ''))
+            .filter(token => token.length > 0);
+    },
+
+    // 3. Stopword Removal
+    removeStopwords: (tokens) => {
+        return tokens.filter(token => !nlpUtils.stopwords.includes(token));
+    },
+
+    // 4. Stemming
+    stem: (word) => {
+        let stemmed = word;
+        for (const rule of nlpUtils.stemRules) {
+            if (rule.regex.test(stemmed)) {
+                stemmed = stemmed.replace(rule.regex, rule.pattern);
+                break;
+            }
+        }
+        return stemmed;
+    },
+
+    // 5. Analisis Sentimen
+    analyzeSentiment: (tokens) => {
+        const sentimentDict = {
+            positive: ['bagus', 'baik', 'senang', 'suka', 'cinta', 'indah', 'hebat', 'mantap', 
+                'berhasil', 'sukses', 'mudah', 'membantu', 'bermanfaat', 'terima', 'kasih'],
+            negative: ['buruk', 'jelek', 'susah', 'sulit', 'gagal', 'benci', 'marah', 'kecewa', 
+                'sedih', 'rumit', 'bingung', 'takut', 'khawatir', 'lambat']
+        };
+
+        let score = 0;
+        tokens.forEach(token => {
+            if (sentimentDict.positive.includes(token)) score++;
+            if (sentimentDict.negative.includes(token)) score--;
+        });
+
+        if (score > 0) return { sentiment: 'Positif', score };
+        if (score < 0) return { sentiment: 'Negatif', score };
+        return { sentiment: 'Netral', score: 0 };
+    },
+
+    // Proses NLP lengkap
+    processText: (text) => {
+        // 1. Lowercase
+        const lowercased = nlpUtils.lowercase(text);
+        
+        // 2. Tokenisasi
+        const tokens = nlpUtils.tokenize(lowercased);
+        
+        // 3. Stopword Removal
+        const withoutStopwords = nlpUtils.removeStopwords(tokens);
+        
+        // 4. Stemming
+        const stemmed = withoutStopwords.map(token => nlpUtils.stem(token));
+        
+        // 5. Analisis Sentimen
+        const sentiment = nlpUtils.analyzeSentiment(stemmed);
+
+        return {
+            original: text,
+            tokens: tokens,
+            withoutStopwords: withoutStopwords,
+            stemmed: stemmed,
+            sentiment: sentiment
+        };
+    }
+};
+
+// Modifikasi fungsi callMistralAPI
 async function callMistralAPI(userMessage) {
     const apiKey = localStorage.getItem(apiKeyStorageKey);
     
     if (!apiKey) {
-        return "Silakan atur kunci API Mistral di pengaturan untuk mengaktifkan respons AI";
+        // Hanya lakukan analisis NLP ketika API tidak tersedia
+        const nlpResult = nlpUtils.processText(userMessage);
+
+        // Format hasil analisis
+        const analysis = [
+            "🔍 Analisis NLP:",
+            "───────────────────",
+            `📝 Teks Asli: "${nlpResult.original}"`,
+            "───────────────────",
+            "🔤 Hasil Tokenisasi:",
+            nlpResult.tokens.join(", "),
+            "───────────────────",
+            "🚫 Setelah Stopwords Removal:",
+            nlpResult.withoutStopwords.join(", "),
+            "───────────────────",
+            "🌱 Hasil Stemming:",
+            nlpResult.stemmed.join(", "),
+            "───────────────────",
+            `😊 Analisis Sentimen: ${nlpResult.sentiment.sentiment} (score: ${nlpResult.sentiment.score})`,
+            "───────────────────",
+            "\nUntuk mendapatkan respons AI yang lebih baik, silakan atur kunci API di pengaturan."
+        ].join("\n");
+
+        return analysis;
     }
-    
+
+    // Jika ada API key, langsung gunakan Mistral API tanpa analisis sentimen
     try {
-        // Dapatkan riwayat chat
         const messages = getChatHistory();
         
-        // Siapkan permintaan
         const requestBody = {
             model: "mistral-small",
             messages: [
                 { role: "system", content: defaultSystemPrompt },
-                ...messages
+                ...messages,
+                { role: "user", content: userMessage }
             ],
             temperature: 0.7,
             max_tokens: 800
         };
         
-        // Buat panggilan API
         const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -393,8 +512,7 @@ async function callMistralAPI(userMessage) {
         }
         
         const data = await response.json();
-        
-        // Kembalikan respons AI
+        // Langsung return content tanpa analisis sentimen
         return data.choices[0].message.content.trim();
         
     } catch (error) {
@@ -403,7 +521,7 @@ async function callMistralAPI(userMessage) {
     }
 }
 
-// Fungsi untuk mengirim pesan
+// Modifikasi fungsi sendMessage
 async function sendMessage() {
     const message = chatInput.value.trim();
     if (message) {
@@ -417,25 +535,17 @@ async function sendMessage() {
         const loading = showLoadingIndicator();
         
         try {
-            // Dapatkan respons API
-            const apiKey = localStorage.getItem(apiKeyStorageKey);
-            
-            if (!apiKey) {
-                loading.remove();
-                addSystemMessage('⚠️ Silakan atur kunci API Mistral di pengaturan untuk mengaktifkan respons AI');
-                return;
-            }
-            
+            // Dapatkan respons
             const aiResponse = await callMistralAPI(message);
             
             // Hapus indikator loading
             loading.remove();
             
-            // Tambahkan respons AI
+            // Tambahkan respons AI atau analisis NLP
             addMessage(aiResponse, 'ai');
             
         } catch (error) {
-            console.error('Kesalahan mendapatkan respons AI:', error);
+            console.error('Kesalahan mendapatkan respons:', error);
             loading.remove();
             addMessage("Maaf, saya mengalami kesalahan. Silakan coba lagi nanti.", 'ai');
         }

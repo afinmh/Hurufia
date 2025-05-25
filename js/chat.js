@@ -244,8 +244,7 @@ function addWelcomeMessage() {
     const welcomeDiv = document.createElement('div');
     welcomeDiv.className = 'welcome-message';
     welcomeDiv.innerHTML = `
-        <p>👋 Halo! Saya adalah Asisten Energi Anda.</p>
-        <p>Ada yang bisa saya bantu hari ini?</p>
+        <p>Bismillah, Assalamualaikum...</p>
     `;
     chatBody.appendChild(welcomeDiv);
     

@@ -193,7 +193,7 @@ function showApiSettings() {
             
             if (apiKey) {
                 localStorage.setItem(apiKeyStorageKey, apiKey);
-                addSystemMessage("Kunci API disimpan. Anda sekarang dapat mengobrol dengan asisten energi Anda!");
+                addSystemMessage("Kunci API disimpan. Anda sekarang dapat mengobrol dengan Ustad Panji!");
             } else {
                 localStorage.removeItem(apiKeyStorageKey);
             }

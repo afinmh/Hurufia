@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hurufia - Belajar Tajwid Online</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -189,6 +190,31 @@
         </div>
     </section>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatPopup">
+        <div class="chat-header" id="chatHeader">
+            <h3><img src="asset/ustad.svg" alt="Ikon Ustad" style="width: 2em; height: 2em; vertical-align: -0.125em; margin-right: 0.25em;"> Ustad Panji</h3>
+            <div class="chat-controls">
+                <button id="chatCollapseBtn" class="chat-control-btn" title="Ciutkan">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <button id="chatCloseBtn" class="chat-control-btn" title="Tutup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-input-container">
+            <textarea id="chatInput" placeholder="Ketik pesan Anda..." rows="1"></textarea>
+            <button id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button id="chatToggleBtn" class="chat-toggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content" data-aos="fade-up" data-aos-duration="1000">
@@ -237,32 +263,6 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script>
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        // Show button when user scrolls down 300px
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        // Smooth scroll to top when button is clicked
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -271,5 +271,6 @@
             offset: 100
         });
     </script>
+    <script src="js/chat.js"></script>
 </body>
-</html> 
+</html>

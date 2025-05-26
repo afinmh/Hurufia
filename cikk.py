@@ -88,6 +88,7 @@ def main():
         print("🟠 Perlu penguatan konsep.")
     else:
         print("🔴 Pemahaman masih lemah, perlu belajar lagi.")
+        print("🔴 Pemahaman sangat lemah, perlu belajar lagi.")
 
 if __name__ == "__main__":
     main()

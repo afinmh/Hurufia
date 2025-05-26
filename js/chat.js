@@ -248,7 +248,7 @@ function addWelcomeMessage() {
     `;
     chatBody.appendChild(welcomeDiv);
     
-    // Tambahkan pesan AI awal
+    // Tambahkan pesan AI awal kok error
     setTimeout(() => {
         addMessage('Ada pertanyaan seputar Tajwid Al-Quran? Saya siap membantu!', 'ai');
         
@@ -270,17 +270,13 @@ function addMessage(text, sender) {
     addMessageToUI(text, sender);
 }
 
-// Fungsi untuk menyimpan pesan ke localStorage
 function saveMessageToStorage(text, sender) {
-    // Dapatkan pesan yang ada
     const storedMessages = localStorage.getItem('chatMessages');
     let messages = [];
     
     if (storedMessages) {
         messages = JSON.parse(storedMessages);
     }
-    
-    // Tambahkan pesan baru dengan timestamp
     messages.push({
         text: text,
         sender: sender,

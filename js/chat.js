@@ -355,18 +355,27 @@ const nlpUtils = {
         'ini', 'itu', 'juga', 'sudah', 'saya', 'aku', 'kamu', 'dia', 'mereka', 'kita', 'akan', 
         'bisa', 'ada', 'tidak', 'saat', 'oleh', 'setelah', 'tentang', 'seperti', 'ketika',
         'bagi', 'sampai', 'karena', 'jika', 'namun', 'sehingga', 'yaitu', 'yakni', 'daripada',
-        'adalah', 'dapat', 'apakah', 'bagaimana', 'dimana', 'kapan', 'mengapa'],
+        'adalah', 'dapat', 'apakah', 'bagaimana', 'dimana', 'kapan', 'mengapa', 'saja', 'mana'],
 
     // Aturan stemming sederhana (contoh pola imbuhan)
     stemRules: [
-        { regex: /^me(\w+)/, result: '$1' },
-        { regex: /^di(\w+)/, result: '$1' },
-        { regex: /^ber(\w+)/, result: '$1' },
-        { regex: /^ter(\w+)/, result: '$1' },
-        { regex: /^pe(\w+)/, result: '$1' },
-        { regex: /(\w+)kan$/, result: '$1' },
-        { regex: /(\w+)i$/, result: '$1' },
-        { regex: /(\w+)an$/, result: '$1' }
+        // Specific word patterns first
+        { regex: /^membantu$/, result: 'bantu', pattern: 'bantu' },        // membantu -> bantu
+        { regex: /^memahami$/, result: 'paham', pattern: 'paham' },        // memahami -> paham
+        { regex: /^materinya$/, result: 'materi', pattern: 'materi' },      // materinya -> materi
+        { regex: /^terstruktur$/, result: 'struktur', pattern: 'struktur' },  // terstruktur -> struktur 
+        { regex: /^dipahami$/, result: 'paham', pattern: 'paham' },        // dipahami -> paham
+        { regex: /^menyenangkan$/, result: 'senang', pattern: 'senang' }, 
+        { regex: /^perkembangan$/, result: 'kembang', pattern: 'kembang' },     // hurufia -> huruf
+
+        // General patterns for other words
+        { regex: /^me(\w+)/, result: '$1', pattern: '$1' },             // prefix me-
+        { regex: /^di(\w+)/, result: '$1', pattern: '$1' },             // prefix di-
+        { regex: /^ter(\w+)/, result: '$1', pattern: '$1' },            // prefix ter-
+        { regex: /^ber(\w+)/, result: '$1', pattern: '$1' },            // prefix ber-
+        { regex: /(\w+)kan$/, result: '$1', pattern: '$1' },            // suffix -kan
+        { regex: /(\w+)i$/, result: '$1', pattern: '$1' },              // suffix -i
+        { regex: /(\w+)nya$/, result: '$1', pattern: '$1' },            // suffix -nya
     ],
 
     // 1. Lowercasing

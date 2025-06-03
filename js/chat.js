@@ -411,7 +411,7 @@ const nlpUtils = {
     analyzeSentiment: (tokens) => {
         const sentimentDict = {
             positive: ['bagus', 'baik', 'senang', 'suka', 'cinta', 'indah', 'hebat', 'mantap', 
-                'berhasil', 'sukses', 'mudah', 'membantu', 'bermanfaat', 'terima', 'kasih'],
+                'berhasil', 'sukses', 'mudah', 'membantu', 'bermanfaat', 'terima', 'kasih','bantu'],
             negative: ['buruk', 'jelek', 'susah', 'sulit', 'gagal', 'benci', 'marah', 'kecewa', 
                 'sedih', 'rumit', 'bingung', 'takut', 'khawatir', 'lambat']
         };

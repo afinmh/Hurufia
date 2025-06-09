@@ -161,22 +161,42 @@ function showApiSettings() {
         
         // Event listener untuk tombol hapus riwayat
         document.getElementById('clearHistoryBtn').addEventListener('click', () => {
-            if (confirm('Apakah Anda yakin ingin menghapus semua riwayat chat?')) {
-                localStorage.removeItem('chatMessages');
-                chatBody.innerHTML = '';
-                addWelcomeMessage();
-                apiModal.classList.remove('show');
-            }
+            Swal.fire({
+                title: 'Hapus semua riwayat chat?',
+                text: "Tindakan ini tidak dapat dibatalkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.removeItem('chatMessages');
+                    chatBody.innerHTML = '';
+                    addWelcomeMessage();
+                    document.getElementById('apiSettingsModal').classList.remove('show');
+                    Swal.fire('Terhapus!', 'Riwayat chat telah dihapus.', 'success');
+                }
+            });
         });
 
         // Event listener untuk tombol hapus API
         document.getElementById('clearApiBtn').addEventListener('click', () => {
-            if (confirm('Apakah Anda yakin ingin menghapus kunci API?')) {
-                localStorage.removeItem(apiKeyStorageKey);
-                document.getElementById('apiKey').value = '';
-                addSystemMessage('⚠️ Kunci API telah dihapus');
-                apiModal.classList.remove('show');
-            }
+            Swal.fire({
+                title: 'Hapus kunci API?',
+                text: "Anda harus memasukkan ulang kunci API untuk menggunakan AI.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.removeItem(apiKeyStorageKey);
+                    document.getElementById('apiKey').value = '';
+                    addSystemMessage('⚠️ Kunci API telah dihapus');
+                    document.getElementById('apiSettingsModal').classList.remove('show');
+                    Swal.fire('Terhapus!', 'Kunci API telah dihapus.', 'success');
+                }
+            });
         });
 
         document.getElementById('closeApiModal').addEventListener('click', () => {
